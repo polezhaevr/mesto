@@ -1,0 +1,5 @@
+.profile {
+    width: calc(100% - 2* 200px);
+    margin: 0 auto;
+    padding-top: 40px;
+}
