@@ -1,40 +1,106 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="./pages/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Mesto: Russia</title>
 </head>
+
 <body class="page">
     <header class="header">
-        <img class = "header__logo" src="images/header-logo.svg" alt="Логотип шапки сервиса по редактированию фотографий - Место">
-        <div class="header__line"></div>
+        <img class="header__logo" src="images/header-logo.svg"
+            alt="Логотип шапки сервиса по редактированию фотографий - Место">
     </header>
 
     <main class="content">
+
         <section class="profile">
             <ul class="profile__list">
-                <li class="profile__list-item">
+                <li class="profile__item">
                     <img class="profile__img-avatar" src="images/avatar-for-profile.jpg" alt="Аватарка профиля">
                 </li>
-                <li class="profile__list-item profile__list-item_position">
-                    <p class="profile__name">Жак-Ив Кусто</p>
+                <li class="profile__item profile__item_position">
+                    <h1 class="profile__name-title">Роман Полежаев</h1>
                     <button class="profile__btn-edit">
-                        
                     </button>
-                    <p class="profile__text">Исследователь океана</p>
+                    <p class="profile__text">Иногда турист</p>
                 </li>
-                <li class="profile__list-item">
+                <li class="profile__item profile__item_position-btn">
                     <button class="profile__btn-pic-add">
                     </button>
                 </li>
             </ul>
         </section>
-    </main>
 
-    <footer class = "footer">
-        
+        <section class="photo-post">
+            <ul class="photo-post__list">
+                <li class="photo-post__item">
+                    <img class="photo-post__image" src="images/black-sea.jpg" alt="Фотография черное море">
+                    <div class="photo-post__text-container">
+                        <p class="photo-post__text">Адлер.Черное море</p>
+                        <button class="photo-post__btn-like"></button>
+                    </div>
+                </li>
+                <li class="photo-post__item">
+                    <img class="photo-post__image" src="images/iset.jpg" alt="Рыбалка на реке Исеть">
+                    <div class="photo-post__text-container">
+                        <p class="photo-post__text">Рыбалка на реке исеть</p>
+                        <button class="photo-post__btn-like"></button>
+                    </div>
+                </li>
+                <li class="photo-post__item">
+                    <img class="photo-post__image" src="images/double-head-sopka-lamb-foreheads.jpg"
+                        alt="Двуглавая сопка бараньи лбы , Таганай">
+                    <div class="photo-post__text-container">
+                        <p class="photo-post__text">Таганай</p>
+                        <button class="photo-post__btn-like"></button>
+                    </div>
+                </li>
+                <li class="photo-post__item">
+                    <img class="photo-post__image" src="images/noyabrsk.jpg"
+                        alt="Ямало Ненецкий Автономный округ , город Ноябрьск мороз мину пятьдесят пять">
+                    <div class="photo-post__text-container">
+                        <p class="photo-post__text">Ноябрьск. Мороз</p>
+                        <button class="photo-post__btn-like"></button>
+                    </div>
+                </li>
+                <li class="photo-post__item">
+                    <img class="photo-post__image" src="images/double-head-sopka.jpg" alt="Двуглавая сопка">
+                    <div class="photo-post__text-container">
+                        <p class="photo-post__text">Двуглавая сопка. Таганай</p>
+                        <button class="photo-post__btn-like"></button>
+                    </div>
+                </li>
+                <li class="photo-post__item">
+                    <img class="photo-post__image" src="images/river-ai.jpg" alt="Река Ай Челябинская область">
+                    <div class="photo-post__text-container">
+                        <p class="photo-post__text">Река Ай</p>
+                        <button class="photo-post__btn-like"></button>
+                    </div>
+
+                </li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <p class="footer__copyright">&#169 2020 Mesto Russia</p>
     </footer>
+
+    <section class="popup">
+        <div class="popup__container">
+            <button class="popup__btn-close"></button>
+            <form class="popup__edit-form">
+                <fieldset class="popup__group-edit-form">
+                    <input class="popup__text-form" type="text">
+                    <input class="popup__text-form" type="text">
+                    <button  class="popup__save-edit">Сохранить</button>
+                </fieldset>
+            </form>
+        </div>
+    </section>
 </body>
+<script src = "js/index.js"></script>
 </html>

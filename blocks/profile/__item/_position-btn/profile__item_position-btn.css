@@ -1,0 +1,10 @@
+.profile__item_position-btn {
+    margin-left: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .profile__item_position-btn {
+        width: 100%;
+        padding-top: 36px;
+    }
+}

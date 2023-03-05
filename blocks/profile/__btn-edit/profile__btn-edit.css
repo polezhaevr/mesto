@@ -6,10 +6,19 @@
     background-image: url('/images/btn-edit.svg');
     background-repeat: no-repeat;
     background-position: center;
-    margin-top: 15px;
     cursor: pointer;
+    margin-left: 18px;
+    margin-top: 15px;
 }
 
 .profile__btn-edit:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width: 560px) {
+    .profile__btn-edit {
+        width: 18px;
+        height: 18px;
+        margin-top: 8px;
+    }
 }

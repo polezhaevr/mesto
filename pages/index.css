@@ -2,18 +2,42 @@
 @import url(../vendor/fonts.css);
 @import url(../blocks/page/page.css);
 
-/*header*/ 
+/*header*/
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__line/header__line.css);
 
-/*profile*/ 
+/*profile*/
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__btn-edit/profile__btn-edit.css);
 @import url(../blocks/profile/__btn-pic-add/profile__btn-pic-add.css);
 @import url(../blocks/profile/__img-avatar/profile__img-avatar.css);
-@import url(../blocks/profile/__list-item/profile__list-item.css);
-@import url(../blocks/profile/__list-item/_position/profile__list-item_position.css);
+@import url(../blocks/profile/__item/_position/profile__list-item_position.css);
+@import url(../blocks/profile/__item/profile__item.css);
 @import url(../blocks/profile/__list/profile__list.css);
-@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__name-title/profile__name-title.css);
 @import url(../blocks/profile/__text/profile__text.css);
+@import url(../blocks/profile/__item/_position-btn/profile__item_position-btn.css);
+
+
+/*photo-post*/
+@import url(../blocks/photo-post/photo-post.css);
+@import url(../blocks/photo-post/__image/photo-post__image.css);
+@import url(../blocks/photo-post/__item/photo-post__item.css);
+@import url(../blocks/photo-post/__list/photo-post__list.css);
+@import url(../blocks/photo-post/__text/photo-post__text.css);
+@import url(../blocks/photo-post/__text-container/photo-post__text-container.css);
+@import url(../blocks/photo-post/__btn-like/photo-post__btn-like.css);
+
+/*footer*/
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/footer/footer.css);
+
+/*popup*/
+
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__btn-close/popup__btn-close.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__edit-form/popup__edit-form.css);
+@import url(../blocks/popup/__group-edit-form/popup__group-edit-form.css);
+@import url(../blocks/popup/__save-edit/popup__save-edit.css);
+@import url(../blocks/popup/__text-form/popup__text-form.css);
