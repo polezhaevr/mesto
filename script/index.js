@@ -2,11 +2,9 @@ let content = document.querySelector('.content');
 let editButton = content.querySelector('.profile__btn-edit');
 let popup = document.querySelector('.popup');
 let closePopupEdit = popup.querySelector('.popup__btn-close');
-// Находим форму в DOM
-let formElement = popup.querySelector('.popup__edit-form')// Воспользуйтесь методом querySelector()
-// Находим поля формы в DOM
-let nameInput = popup.querySelector('.popup__text-form_type-name');// Воспользуйтесь инструментом .querySelector()
-let jobInput = popup.querySelector('.popup__text-form_type-job');// Воспользуйтесь инструментом .querySelector()
+let formElement = popup.querySelector('.popup__edit-form')
+let nameInput = popup.querySelector('.popup__text-form_type-name');
+let jobInput = popup.querySelector('.popup__text-form_type-job');
 
 
 function popupEditOpen() {
@@ -16,7 +14,6 @@ function popupEditOpen() {
 function popupEditClose() {
     popup.classList.remove('popup_opened');
 }
-
 
 // Обработчик «отправки» формы, хотя пока
 // она никуда отправляться не будет
@@ -40,11 +37,9 @@ function handleFormSubmit(evt) {
     popup.classList.remove('popup_opened');
 }
 
-// Прикрепляем обработчик к форме:
-// он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);
 editButton.addEventListener('click', popupEditOpen);
 closePopupEdit.addEventListener('click', popupEditClose);
 
-console.log(nameInput.value);
+
 
