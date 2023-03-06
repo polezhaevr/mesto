@@ -5,3 +5,14 @@
     margin-right: 36px;
     margin-bottom: 37px;
 }
+
+
+@media screen and (max-width: 560px) {
+    .popup__edit-form {
+        width: 238px;
+        padding-top: 69px;
+        padding-left: 22px;
+        margin-right: 22px;
+        margin-bottom: 25px;
+    }
+}

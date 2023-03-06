@@ -11,13 +11,11 @@
 @import url(../blocks/profile/__btn-edit/profile__btn-edit.css);
 @import url(../blocks/profile/__btn-pic-add/profile__btn-pic-add.css);
 @import url(../blocks/profile/__img-avatar/profile__img-avatar.css);
+@import url(../blocks/profile/__item/_position-btn/profile__item_position-btn.css);
 @import url(../blocks/profile/__item/_position/profile__list-item_position.css);
-@import url(../blocks/profile/__item/profile__item.css);
 @import url(../blocks/profile/__list/profile__list.css);
 @import url(../blocks/profile/__name-title/profile__name-title.css);
 @import url(../blocks/profile/__text/profile__text.css);
-@import url(../blocks/profile/__item/_position-btn/profile__item_position-btn.css);
-
 
 /*photo-post*/
 @import url(../blocks/photo-post/photo-post.css);
@@ -33,8 +31,8 @@
 @import url(../blocks/footer/footer.css);
 
 /*popup*/
-
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__btn-close/popup__btn-close.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__edit-form/popup__edit-form.css);
