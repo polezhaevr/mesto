@@ -14,7 +14,21 @@
 }
 
 .popup__btn-close:hover {
-    background-image: url('/images/btn-close-hover.svg');
-    background-repeat: no-repeat;
-    background-position: center;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 560px) {
+    .popup__btn-close {
+        width: 20px;
+        height: 20px;
+        top: -36px;
+        right: 0px;
+        background-image: url('/images/btn-close-small.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .popup__btn-close:hover {
+        opacity: 0.6;
+    }
 }

@@ -9,3 +9,13 @@
     padding-top: 34px;
     padding-left: 36px;
 }
+
+@media screen and (max-width: 560px) {
+    .popup__edit-title {
+        font-size: 18px;
+        line-height: 22px;
+        padding-top: 25px;
+        padding-left: 22px;
+        margin-right: 22px;
+    } 
+}
