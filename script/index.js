@@ -1,10 +1,12 @@
 let content = document.querySelector('.content');
 let editButton = content.querySelector('.profile__btn-edit');
 let popup = document.querySelector('.popup');
-let closePopupEdit = popup.querySelector('.popup__btn-close');
-let formElement = popup.querySelector('.popup__edit-form')
-let nameInput = popup.querySelector('.popup__text-form_type-name');
-let jobInput = popup.querySelector('.popup__text-form_type-job');
+let closePopupBtn = popup.querySelector('.popup__btn-close');
+let formElement = popup.querySelector('.popup__edit-form');
+let nameInput = popup.querySelector('.popup__text-form-type-name');
+let jobInput = popup.querySelector('.popup__text-form-type-job');
+let nameTitle = document.querySelector('.profile__name-title');
+let profileText = document.querySelector('.profile__text');
 
 
 function popupEditOpen() {
@@ -13,6 +15,8 @@ function popupEditOpen() {
 
 function popupEditClose() {
     popup.classList.remove('popup_opened');
+    nameInput.value = nameTitle.textContent;
+    jobInput.value = profileText.textContent;
 }
 
 // Обработчик «отправки» формы, хотя пока
@@ -27,19 +31,18 @@ function handleFormSubmit(evt) {
     let editJob = jobInput.value;
 
     // Выберите элементы, куда должны быть вставлены значения полей
-    let nameTitle = document.querySelector('.profile__name-title');
-    let profileText = document.querySelector('.profile__text');
+
 
     // Вставьте новые значения с помощью textContent
     nameTitle.textContent = editName;
     profileText.textContent = editJob;
 
-    popup.classList.remove('popup_opened');
+    popupEditClose();
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
 editButton.addEventListener('click', popupEditOpen);
-closePopupEdit.addEventListener('click', popupEditClose);
+closePopupBtn.addEventListener('click', popupEditClose);
 
 
 

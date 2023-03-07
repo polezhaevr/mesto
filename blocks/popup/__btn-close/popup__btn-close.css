@@ -4,7 +4,7 @@
     background-color: unset;
     border: none;
     outline: none;
-    background-image: url('/images/btn-close.svg');
+    background-image: url("/images/btn-close.svg");
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -23,12 +23,6 @@
         height: 20px;
         top: -36px;
         right: 0px;
-        background-image: url('/images/btn-close-small.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    .popup__btn-close:hover {
-        opacity: 0.6;
+        background-size: cover
     }
 }

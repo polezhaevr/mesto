@@ -15,7 +15,5 @@
 
 .photo-post__btn-like:active {
     background-image: url('/images/btn-like-active.svg');
-    background-repeat: no-repeat;
-    background-position: center;
     opacity: 1;
 }

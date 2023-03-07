@@ -1,4 +1,4 @@
-.popup__text-form {
+.popup__text-form-type-name {
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -9,9 +9,11 @@
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     padding-bottom: 11px;
     outline: none;
+    padding-top: 54px;
 }
 
-
-.popup__text-form:nth-child(2) {
-    margin-top: 30px;
+@media screen and (max-width: 560px) {
+    .popup__text-form-type-name {
+        padding-top: 69px;
+    }
 }
