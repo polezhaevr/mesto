@@ -13,11 +13,17 @@
 }
 
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 768px) {
     .profile__name-title {
-        max-width: 295px;
         font-size: 27px;
         line-height: 33px;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .profile__name-title {
+        max-width: 190px;
+        margin-left: 19px;
     }
 }

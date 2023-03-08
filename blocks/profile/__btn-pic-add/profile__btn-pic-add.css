@@ -18,5 +18,18 @@
 @media screen and (max-width: 768px) {
     .profile__btn-pic-add {
         width: 100%;
+        margin-top: 36px;
+        display: flex;
+        justify-content: center;
+        margin-right: 19px;
+        margin-left: 19px;
+
+    }
+}
+
+
+@media screen and (max-width: 560px) {
+    .profile__btn-pic-add {
+        background-size: 16px 16px;
     }
 }
