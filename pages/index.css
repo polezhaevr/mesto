@@ -23,6 +23,7 @@
 @import url(../blocks/photo-post/__text/photo-post__text.css);
 @import url(../blocks/photo-post/__text-container/photo-post__text-container.css);
 @import url(../blocks/photo-post/__btn-like/photo-post__btn-like.css);
+@import url(../blocks/photo-post/__btn-trash/photo-post__btn-trash.css);
 
 /*footer*/
 @import url(../blocks/footer/__copyright/footer__copyright.css);

@@ -29,58 +29,7 @@
 
         <section class="photo-post">
             <ul class="photo-post__list">
-                <li class="photo-post__item">
-                    <img class="photo-post__image" src="images/black-sea.jpg" alt="Фотография черное море">
-                    <div class="photo-post__text-container">
-                        <h2 class="photo-post__text">Адлер.Черное море</h2>
-                        <button class="photo-post__btn-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="photo-post__item">
-                    <img class="photo-post__image" src="images/iset.jpg" alt="Рыбалка на реке Исеть">
-                    <div class="photo-post__text-container">
-                        <h2 class="photo-post__text">Рыбалка на реке исеть</h2>
-                        <button class="photo-post__btn-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="photo-post__item">
-                    <img class="photo-post__image" src="images/double-head-sopka-lamb-foreheads.jpg"
-                        alt="Двуглавая сопка бараньи лбы , Таганай">
-                    <div class="photo-post__text-container">
-                        <h2 class="photo-post__text">Таганай</h2>
-                        <button class="photo-post__btn-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="photo-post__item">
-                    <img class="photo-post__image" src="images/noyabrsk.jpg"
-                        alt="Ямало Ненецкий Автономный округ , город Ноябрьск мороз мину пятьдесят пять">
-                    <div class="photo-post__text-container">
-                        <h2 class="photo-post__text">Ноябрьск. Мороз</h2>
-                        <button class="photo-post__btn-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="photo-post__item">
-                    <img class="photo-post__image" src="images/double-head-sopka.jpg" alt="Двуглавая сопка">
-                    <div class="photo-post__text-container">
-                        <h2 class="photo-post__text">Двуглавая сопка. Таганай</h2>
-                        <button class="photo-post__btn-like" type="button"></button>
-                    </div>
-                </li>
-                <li class="photo-post__item">
-                    <img class="photo-post__image" src="images/river-ai.jpg" alt="Река Ай Челябинская область">
-                    <div class="photo-post__text-container">
-                        <h2 class="photo-post__text">Река Ай</h2>
-                        <button class="photo-post__btn-like" type="button"></button>
-                    </div>
-                </li>
 
-                <li class="photo-post__item">
-                    <img class="photo-post__image" src="images/nusya.jpg" alt="Кошка чиллит на пляже">
-                    <div class="photo-post__text-container">
-                        <h2 class="photo-post__text">Нюююся на Мальдивах</h2>
-                        <button class="photo-post__btn-like" type="button"></button>
-                    </div>
-                </li>
             </ul>
         </section>
     </main>
@@ -102,6 +51,33 @@
             </form>
         </div>
     </div>
+
+    <div class="popup popup_add">
+        <div class="popup__container">
+            <button class="popup__btn-close" type="button"></button>
+            <h2 class="popup__edit-title">Редактировать профиль</h2>
+            <form name="popupedit" class="popup__edit-form">
+                <input name="inputeditname" class="popup__input-text popup__input-text_insert_nameinput" type="text"
+                    value="Роман Полежаев" placeholder="Имя Фамилия" required>
+                <input name="inputedittext" class="popup__input-text popup__input-text_insert_jobinput" type="text"
+                    value="Иногда турист" placeholder="Описание" required>
+                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit">Сохранить</button>
+            </form>
+        </div>
+    </div>       
+    
+    <template id="photo-post-template">
+        <li class="photo-post__item">
+            <button class="photo-post__btn-trash" type="button"></button>
+            <img class="photo-post__image" src="" alt="">
+            <div class="photo-post__text-container">
+                <h2 class="photo-post__text"></h2>
+                <button class="photo-post__btn-like" type="button"></button>
+            </div>
+        </li>
+    </template>
+
+
     <script src="script/index.js"></script>
 </body>
 
