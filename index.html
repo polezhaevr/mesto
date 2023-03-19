@@ -54,14 +54,14 @@
 
     <div class="popup popup_add">
         <div class="popup__container">
-            <button class="popup__btn-close" type="button"></button>
-            <h2 class="popup__edit-title">Редактировать профиль</h2>
+            <button class="popup__btn-close  popup__btn-close_add" type="button"></button>
+            <h2 class="popup__edit-title">Новое место</h2>
             <form name="popupedit" class="popup__edit-form">
-                <input name="inputeditname" class="popup__input-text popup__input-text_insert_nameinput" type="text"
-                    value="Роман Полежаев" placeholder="Имя Фамилия" required>
-                <input name="inputedittext" class="popup__input-text popup__input-text_insert_jobinput" type="text"
-                    value="Иногда турист" placeholder="Описание" required>
-                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit">Сохранить</button>
+                <input name="inputeditname" class="popup__input-text popup__input-text_insert_textinput" type="text"
+                     placeholder="Название" required>
+                <input name="inputedittext" class="popup__input-text popup__input-text_insert_linkinput" type="text"
+                     placeholder="Ссылка на картинку" required>
+                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit popup__btn-save-edit_create">Создать</button>
             </form>
         </div>
     </div>       

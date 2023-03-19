@@ -24,6 +24,7 @@
 @import url(../blocks/photo-post/__text-container/photo-post__text-container.css);
 @import url(../blocks/photo-post/__btn-like/photo-post__btn-like.css);
 @import url(../blocks/photo-post/__btn-trash/photo-post__btn-trash.css);
+@import url(../blocks/photo-post/__btn-like/_focus/photo-post__btn-like_focus.css);
 
 /*footer*/
 @import url(../blocks/footer/__copyright/footer__copyright.css);
