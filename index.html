@@ -58,14 +58,23 @@
             <h2 class="popup__edit-title">Новое место</h2>
             <form name="popupedit" class="popup__edit-form">
                 <input name="inputeditname" class="popup__input-text popup__input-text_insert_textinput" type="text"
-                     placeholder="Название" required>
+                    placeholder="Название" required>
                 <input name="inputedittext" class="popup__input-text popup__input-text_insert_linkinput" type="text"
-                     placeholder="Ссылка на картинку" required>
-                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit popup__btn-save-edit_create">Создать</button>
+                    placeholder="Ссылка на картинку" required>
+                <button name="inputsaveedit" type="submit"
+                    class="popup__btn-save-edit popup__btn-save-edit_create">Создать</button>
             </form>
         </div>
-    </div>       
-    
+    </div>
+
+    <div class="popup popup_open-img">
+        <div class="popup__container-img">
+            <img class="popup__opened-img" src="" alt="">
+            <h2 class="popup__opened-img-text"></h2>
+            <button class="popup__btn-close  popup__btn-close_open-img" type="button"></button>
+        </div>
+    </div>
+
     <template id="photo-post-template">
         <li class="photo-post__item">
             <button class="photo-post__btn-trash" type="button"></button>

@@ -1,5 +1,5 @@
 .photo-post__btn-like_focus {
-    background-image: url('/images/btn-like-active.svg');
+    background-image: url('../../../../images/btn-like-active.svg');
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
@@ -7,4 +7,8 @@
     width: 22px;
     height: 19px;
     background-color: #FFFFFF;
+}
+
+.photo-post__btn-like_focus:hover {
+    opacity: 1;
 }
