@@ -46,7 +46,7 @@ let nameInput = popupProfile.querySelector('.popup__input-text_insert_nameinput'
     popupOpenedImg = document.querySelector('.popup__opened-img'),
     popupOpenedImgText = document.querySelector('.popup__opened-img-text');
 
-    
+
 function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
@@ -88,11 +88,10 @@ const initialCardsInfo = initialCards.map(item => {
 });
 
 function insert() {
-    initialCardsInfo.forEach(inserPhotoItem);
+    initialCardsInfo.forEach(createCard);
 };
 
-
-function inserPhotoItem({
+function createCard({
     name,
     link
 }) {
@@ -120,39 +119,22 @@ function inserPhotoItem({
         popupOpenedImgText.textContent = name;
 
     });
+
+    return photoPostItem;
 }
 
 insert();
 
 function createPostItemFormSubmit(evt) {
     evt.preventDefault();
-    const photoPostItem = photoPostTemplate.querySelector('.photo-post__item').cloneNode(true);
-    let addLink = popupInputTextInsertLinkInput.value;
-    let addText = popupInputTextInsertNameInput.value;
 
-    photoPostItem.querySelector('.photo-post__image').src = addLink;
-    photoPostItem.querySelector('.photo-post__text').textContent = addText;
-    photoPostItem.querySelector('.photo-post__image').alt = 'Фотография ' + addText;
+    let item = {
+        name: popupInputTextInsertNameInput.value,
+        link: popupInputTextInsertLinkInput.value
+    }
 
-    photoPostList.prepend(photoPostItem);
-    photoPostItem.querySelector('.photo-post__btn-trash').addEventListener('click', function () {
-        photoPostItem.remove();
-    });
-
-    photoPostItem.querySelector('.photo-post__btn-like').addEventListener('click', function () {
-        photoPostItem.querySelector('.photo-post__btn-like').classList.toggle('photo-post__btn-like_focus');
-    });
-
-    photoPostItem.querySelector('.photo-post__image').addEventListener('click', function () {
-        popupOpenImg.classList.add('popup_opened');
-        popupOpenedImg.src = addLink;
-        popupOpenedImg.alt = 'Фотография ' + addText;
-        popupOpenedImgText.textContent = addText;
-
-    });
-
+    createCard(item);
     closePopup(popupAdd);
-
 }
 
 popupEditFormAdd.addEventListener('submit', createPostItemFormSubmit);
