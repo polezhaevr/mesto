@@ -108,8 +108,8 @@ function createCard({
 function renderCard(item) {
     const photoPostItem  = createCard(item); 
     photoPostList.prepend(photoPostItem);
-  
 };
+
 
 function insert() {
     initialCards.forEach(renderCard);
@@ -120,11 +120,11 @@ insert();
 
 function createPostItemFormSubmit(evt) {
     evt.preventDefault();
-
-    const item = renderCard ({
+    
+    const item = {
         name: popupInputTextInsertNameInput.value,
         link: popupInputTextInsertLinkInput.value
-    });
+    };
 
     renderCard(item);
     closePopup(popupAdd);
