@@ -50,7 +50,11 @@ function openPopup(popup) {
     popup.classList.add('popup_opened');
 }
 
-editButton.addEventListener('click', popup => openPopup(popupProfile));
+editButton.addEventListener('click', popup => {
+    openPopup(popupProfile);
+    nameInput.value = nameTitle.textContent; 
+    jobInput.value = profileText.textContent; 
+});
 profileBtnPicAdd.addEventListener('click', popup => openPopup(popupAdd));
 
 function closePopup(popup) {
