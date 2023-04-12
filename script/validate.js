@@ -40,7 +40,6 @@ const setEventListeners = (formElement) => {
             toggleButtonState(inputList, buttonElement);
         });
     });
-    console.log(inputList)
 };
 
 function enableValidation() {

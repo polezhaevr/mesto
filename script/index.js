@@ -43,22 +43,25 @@ const initialCards = [{
     profileText = document.querySelector('.profile__text'),
     photoPostTemplate = document.querySelector('#photo-post-template').content,
     popupOpenedImg = document.querySelector('.popup__opened-img'),
-    popupOpenedImgText = document.querySelector('.popup__opened-img-text');
+    popupOpenedImgText = document.querySelector('.popup__opened-img-text'),
+    popup = document.querySelector('.popup');
 
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePressEsc);
 }
 
 editButton.addEventListener('click', popup => {
     openPopup(popupProfile);
-    nameInput.value = nameTitle.textContent; 
-    jobInput.value = profileText.textContent; 
+    nameInput.value = nameTitle.textContent;
+    jobInput.value = profileText.textContent;
 });
 profileBtnPicAdd.addEventListener('click', popup => openPopup(popupAdd));
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closePressEsc);
 }
 
 closePopupBtn.addEventListener('click', popup => closePopup(popupProfile));
@@ -79,11 +82,30 @@ function handlerFormSubmit(evt) {
 
 formElement.addEventListener('submit', handlerFormSubmit);
 
+function closePressEsc(evt) {
+    if (evt.key === 'Escape') {
+        const popupOpened = document.querySelector('.popup_opened');
+        closePopup(popupOpened);
+    }
+}
+
+popupProfile.addEventListener("click", (evt) => {
+    if (evt.currentTarget === evt.target) {
+        closePopup(popupProfile);
+    }
+})
+
+popupAdd.addEventListener("click", (evt) => {
+    if (evt.currentTarget === evt.target) {
+        closePopup(popupAdd);
+    }
+})
+
 function createCard({
     name,
     link
-})  {
-    const photoPostItem = photoPostTemplate.querySelector('.photo-post__item').cloneNode(true); 
+}) {
+    const photoPostItem = photoPostTemplate.querySelector('.photo-post__item').cloneNode(true);
     photoPostItem.querySelector('.photo-post__image').src = link;
     photoPostItem.querySelector('.photo-post__image').alt = 'Фотография ' + name;
     photoPostItem.querySelector('.photo-post__text').textContent = name;
@@ -105,26 +127,26 @@ function createCard({
         popupOpenedImgText.textContent = name;
 
     });
-    return photoPostItem; 
+    return photoPostItem;
 }
 
 
 function renderCard(item) {
-    const photoPostItem  = createCard(item); 
+    const photoPostItem = createCard(item);
     photoPostList.prepend(photoPostItem);
-};
+}
 
 
 function insert() {
     initialCards.forEach(renderCard);
-};
+}
 
 insert();
 
 
 function createPostItemFormSubmit(evt) {
     evt.preventDefault();
-    
+
     const item = {
         name: popupInputTextInsertNameInput.value,
         link: popupInputTextInsertLinkInput.value
