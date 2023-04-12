@@ -42,12 +42,14 @@
         <div class="popup__container">
             <button class="popup__btn-close" type="button"></button>
             <h2 class="popup__edit-title">Редактировать профиль</h2>
-            <form name="popupedit" class="popup__edit-form">
-                <input name="inputeditname" class="popup__input-text popup__input-text_insert_nameinput" type="text"
+            <form name="popupedit" class="popup__edit-form" novalidate>
+                <input minlength="2" maxlength="40" id="text-name-input" class="popup__input-text popup__input-text_insert_nameinput" type="text"
                     value="Роман Полежаев" placeholder="Имя Фамилия" required>
-                <input name="inputedittext" class="popup__input-text popup__input-text_insert_jobinput" type="text"
+                    <span class="text-name-input-error popup__input-error">Вы пропустили это поле.</span>
+                <input minlength="2" maxlength="200" id="text-input" class="popup__input-text popup__input-text_insert_jobinput" type="text"
                     value="Иногда турист" placeholder="Описание" required>
-                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit">Сохранить</button>
+                    <span class="text-input-error popup__input-error">Вы пропустили это поле.</span>
+                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit popup__btn-save-edit_disabled" disabled >Сохранить</button>
             </form>
         </div>
     </div>
@@ -56,13 +58,15 @@
         <div class="popup__container">
             <button class="popup__btn-close  popup__btn-close_add" type="button"></button>
             <h2 class="popup__edit-title">Новое место</h2>
-            <form name="popupadd" class="popup__edit-form popup__edit-form_add">
-                <input name="inputeditname" class="popup__input-text popup__input-text_insert_textinput" type="text"
+            <form name="popupadd" class="popup__edit-form popup__edit-form_add" novalidate>
+                <input minlength="2" maxlength="30" id="text-input" class="popup__input-text popup__input-text_insert_textinput" type="text"
                     placeholder="Название" required>
-                <input name="inputedittext" class="popup__input-text popup__input-text_insert_linkinput" type="text"
+                    <span class="text-input-error popup__input-error">Вы пропустили это поле.</span>
+                <input id="url-input" class="popup__input-text popup__input-text_insert_linkinput" type="url"
                     placeholder="Ссылка на картинку" required>
+                    <span class="url-input-error popup__input-error">Введите адрес сайта.</span>
                 <button name="inputsaveedit" type="submit"
-                    class="popup__btn-save-edit popup__btn-save-edit_create">Создать</button>
+                    class="popup__btn-save-edit popup__btn-save-edit_create popup__btn-save-edit_disabled">Создать</button>
             </form>
         </div>
     </div>
@@ -88,6 +92,7 @@
 
 
     <script src="script/index.js"></script>
+    <script src="script/validate.js"></script>
 </body>
 
 </html>
