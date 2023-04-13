@@ -43,13 +43,16 @@
             <button class="popup__btn-close" type="button"></button>
             <h2 class="popup__edit-title">Редактировать профиль</h2>
             <form name="popupedit" class="popup__edit-form" novalidate>
-                <input minlength="2" maxlength="40" id="text-name-input" class="popup__input-text popup__input-text_insert_nameinput" type="text"
-                    value="Роман Полежаев" placeholder="Имя Фамилия" required>
-                    <span class="text-name-input-error popup__input-error">Вы пропустили это поле.</span>
-                <input minlength="2" maxlength="200" id="text-input" class="popup__input-text popup__input-text_insert_jobinput" type="text"
-                    value="Иногда турист" placeholder="Описание" required>
-                    <span class="text-input-error popup__input-error">Вы пропустили это поле.</span>
-                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit popup__btn-save-edit_disabled" disabled >Сохранить</button>
+                <input minlength="2" maxlength="40" id="text-name-input"
+                    class="popup__input-text popup__input-text_insert_nameinput" type="text" value="Роман Полежаев"
+                    placeholder="Имя Фамилия" required>
+                <span class="text-name-input-error popup__input-error">Вы пропустили это поле.</span>
+                <input minlength="2" maxlength="200" id="text-input"
+                    class="popup__input-text popup__input-text_insert_jobinput" type="text" value="Иногда турист"
+                    placeholder="Описание" required>
+                <span class="text-input-error popup__input-error">Вы пропустили это поле.</span>
+                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit popup__btn-save-edit_disabled"
+                    disabled>Сохранить</button>
             </form>
         </div>
     </div>
@@ -59,12 +62,13 @@
             <button class="popup__btn-close  popup__btn-close_add" type="button"></button>
             <h2 class="popup__edit-title">Новое место</h2>
             <form name="popupadd" class="popup__edit-form popup__edit-form_add" novalidate>
-                <input minlength="2" maxlength="30" id="text-input-link" class="popup__input-text popup__input-text_insert_textinput" type="text"
-                    placeholder="Название" required>
-                    <span class="text-input-link-error popup__input-error">Вы пропустили это поле.</span>
+                <input minlength="2" maxlength="30" id="text-input-link"
+                    class="popup__input-text popup__input-text_insert_textinput" type="text" placeholder="Название"
+                    required>
+                <span class="text-input-link-error popup__input-error">Вы пропустили это поле.</span>
                 <input id="url-input" class="popup__input-text popup__input-text_insert_linkinput" type="url"
                     placeholder="Ссылка на картинку" required>
-                    <span class="url-input-error popup__input-error">Введите адрес сайта.</span>
+                <span class="url-input-error popup__input-error">Введите адрес сайта.</span>
                 <button name="inputsaveedit" type="submit"
                     class="popup__btn-save-edit popup__btn-save-edit_create popup__btn-save-edit_disabled">Создать</button>
             </form>

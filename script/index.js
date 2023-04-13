@@ -44,7 +44,8 @@ const initialCards = [{
     photoPostTemplate = document.querySelector('#photo-post-template').content,
     popupOpenedImg = document.querySelector('.popup__opened-img'),
     popupOpenedImgText = document.querySelector('.popup__opened-img-text'),
-    popup = document.querySelector('.popup');
+    popup = document.querySelector('.popup'),
+    popupBtnSaveEdit = document.querySelector('.popup__btn-save-edit_create');
 
 
 function openPopup(popup) {
@@ -57,7 +58,16 @@ editButton.addEventListener('click', popup => {
     nameInput.value = nameTitle.textContent;
     jobInput.value = profileText.textContent;
 });
-profileBtnPicAdd.addEventListener('click', popup => openPopup(popupAdd));
+
+function disabledPicBtnPicAdd(disable) {
+    disable.classList.add('popup__btn-save-edit_disabled');
+    disable.setAttribute('disabled', 'disabled');
+};
+
+profileBtnPicAdd.addEventListener('click', popup => {
+    openPopup(popupAdd);
+    disabledPicBtnPicAdd(popupBtnSaveEdit);
+});
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
@@ -66,7 +76,7 @@ function closePopup(popup) {
 
 closePopupBtn.addEventListener('click', popup => closePopup(popupProfile));
 popupBtnCloseAdd.addEventListener('click', popup => closePopup(popupAdd));
-popupBtnCloseOpenImg.addEventListener('click', popup => closePopup(popupOpenImg));
+popupBtnCloseOpenImg.addEventListener('click', popup => closePopup(popupOpenImg));  
 
 function handlerFormSubmit(evt) {
     evt.preventDefault();
@@ -101,6 +111,14 @@ popupAdd.addEventListener("click", (evt) => {
     }
 })
 
+popupOpenImg.addEventListener("click", (evt) => {
+    if (evt.currentTarget === evt.target) {
+        closePopup(popupOpenImg);
+    }
+})
+
+
+
 function createCard({
     name,
     link
@@ -121,7 +139,7 @@ function createCard({
     });
 
     photoPostItem.querySelector('.photo-post__image').addEventListener('click', function () {
-        popupOpenImg.classList.add('popup_opened');
+        openPopup(popupOpenImg);
         popupOpenedImg.src = link;
         popupOpenedImg.alt = 'Фотография ' + name;
         popupOpenedImgText.textContent = name;
