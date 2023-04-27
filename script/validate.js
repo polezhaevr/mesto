@@ -9,6 +9,8 @@ errorClass: 'popup__input-error_active'
 
 function enableValidation({formSelector , ...rest}) {
     formList = Array.from(document.querySelectorAll(formSelector));
+
+    
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();

@@ -1,28 +1,40 @@
+import { Card } from './Card.js'
+import { FormValidator } from './FormValidator.js'
+
+
 const initialCards = [{
-            name: 'Архыз',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-        },
-        {
-            name: 'Челябинская область',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-        },
-        {
-            name: 'Иваново',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-        },
-        {
-            name: 'Камчатка',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-        },
-        {
-            name: 'Холмогорский район',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-        },
-        {
-            name: 'Байкал',
-            link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-        }
-    ],
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+},
+{
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+},
+{
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+},
+{
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+},
+{
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+},
+{
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+}
+],
+
+    configValidation = {
+        inputSelector: '.popup__input-text',
+        submitButtonSelector: '.popup__btn-save-edit',
+        inactiveButtonClass: 'popup__btn-save-edit_disabled',
+        inputErrorClass: 'popup__input-text_type_error',
+        errorClass: 'popup__input-error_active'
+    },
     content = document.querySelector('.content'),
     editButton = content.querySelector('.profile__btn-edit'),
     popupProfile = document.querySelector('.popup_profile'),
@@ -41,14 +53,16 @@ const initialCards = [{
     popupInputTextInsertLinkInput = document.querySelector('.popup__input-text_insert_linkinput'),
     nameTitle = document.querySelector('.profile__name-title'),
     profileText = document.querySelector('.profile__text'),
-    photoPostTemplate = document.querySelector('#photo-post-template').content,
     popupOpenedImg = document.querySelector('.popup__opened-img'),
     popupOpenedImgText = document.querySelector('.popup__opened-img-text'),
     popup = document.querySelector('.popup'),
-    popupBtnSaveEdit = document.querySelector('.popup__btn-save-edit_create');
+    popupBtnSaveEdit = document.querySelector('.popup__btn-save-edit_create'),
+    formValidProf = document.querySelector('.popup__edit-form'),
+    formValidCard = document.querySelector('.popup__edit-form_add'); 
 
+export { popupOpenImg, popupOpenedImg, popupOpenedImgText};
 
-function openPopup(popup) {
+export function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePressEsc);
 }
@@ -76,7 +90,7 @@ function closePopup(popup) {
 
 closePopupBtn.addEventListener('click', popup => closePopup(popupProfile));
 popupBtnCloseAdd.addEventListener('click', popup => closePopup(popupAdd));
-popupBtnCloseOpenImg.addEventListener('click', popup => closePopup(popupOpenImg));  
+popupBtnCloseOpenImg.addEventListener('click', popup => closePopup(popupOpenImg));
 
 function handlerFormSubmit(evt) {
     evt.preventDefault();
@@ -118,49 +132,21 @@ popupOpenImg.addEventListener("click", (evt) => {
 })
 
 
+function renderCard() {
+    initialCards.forEach((item) => {
+        const card = new Card('.photo-post-template', item);
+        const cardElement = card.generateCard();
 
-function createCard({
-    name,
-    link
-}) {
-    const photoPostItem = photoPostTemplate.querySelector('.photo-post__item').cloneNode(true);
-    photoPostItem.querySelector('.photo-post__image').src = link;
-    photoPostItem.querySelector('.photo-post__image').alt = 'Фотография ' + name;
-    photoPostItem.querySelector('.photo-post__text').textContent = name;
-
-
-    photoPostItem.querySelector('.photo-post__btn-trash').addEventListener('click', function () {
-        photoPostItem.remove();
+        document.querySelector('.photo-post__list').append(cardElement);
     });
-
-    photoPostItem.querySelector('.photo-post__btn-like').addEventListener('click', function () {
-        photoPostItem.querySelector('.photo-post__btn-like').classList.toggle('photo-post__btn-like_focus');
-
-    });
-
-    photoPostItem.querySelector('.photo-post__image').addEventListener('click', function () {
-        openPopup(popupOpenImg);
-        popupOpenedImg.src = link;
-        popupOpenedImg.alt = 'Фотография ' + name;
-        popupOpenedImgText.textContent = name;
-
-    });
-    return photoPostItem;
 }
 
+function insertAddCard(newCard) {
+    const addedCard = new Card('.photo-post-template', newCard);
+    const newAddedCard = addedCard.generateCard();
 
-function renderCard(item) {
-    const photoPostItem = createCard(item);
-    photoPostList.prepend(photoPostItem);
+    document.querySelector('.photo-post__list').prepend(newAddedCard);
 }
-
-
-function insert() {
-    initialCards.forEach(renderCard);
-}
-
-insert();
-
 
 function createPostItemFormSubmit(evt) {
     evt.preventDefault();
@@ -170,7 +156,7 @@ function createPostItemFormSubmit(evt) {
         link: popupInputTextInsertLinkInput.value
     };
 
-    renderCard(item);
+    insertAddCard(item);
     closePopup(popupAdd);
 
     popupInputTextInsertLinkInput.value = "";
@@ -178,3 +164,12 @@ function createPostItemFormSubmit(evt) {
 }
 
 popupEditFormAdd.addEventListener('submit', createPostItemFormSubmit);
+
+renderCard();
+
+
+const formValidatorProfile = new FormValidator(configValidation, formValidProf);
+formValidatorProfile.enableValidation();
+
+const formValidatorAddCard = new FormValidator(configValidation, formValidCard);
+formValidatorAddCard.enableValidation();

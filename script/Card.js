@@ -1,30 +1,7 @@
-const initialCards = [{
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-},
-{
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-},
-{
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-},
-{
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-},
-{
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-},
-{
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-}
-];
+import { popupOpenImg, popupOpenedImg, popupOpenedImgText } from './index.js';
+import { openPopup } from './index.js';
 
-class Card {
+export class Card {
     constructor(templateSelector, data) {
         this._templateSelector = templateSelector;
         this._name = data.name;
@@ -43,6 +20,7 @@ class Card {
 
     generateCard() {
         this._element = this._getTemplate();
+        this._setEventListeners();
 
         this._element.querySelector('.photo-post__image').src = this._link;
         this._element.querySelector('.photo-post__image').alt = 'Фотография ' + this._name;
@@ -51,15 +29,33 @@ class Card {
         return this._element;
     }
 
+    _deleteCard() {
+        this._element.remove();
+    }
 
+    _addLikeCard() {
+        this._element.querySelector('.photo-post__btn-like').classList.toggle('photo-post__btn-like_focus');
+    }
+
+    _openImageFullscreen() {
+        openPopup(popupOpenImg);
+        popupOpenedImg.src = this._link;
+        popupOpenedImg.alt = 'Фотография ' + this._name;
+        popupOpenedImgText.textContent = this._name;
+    }
+
+    _setEventListeners() {
+        this._element.querySelector('.photo-post__btn-trash').addEventListener('click', () => {
+            this._deleteCard();
+        });
+
+        this._element.querySelector('.photo-post__btn-like').addEventListener('click', () => {
+            this._addLikeCard();
+        });
+
+        this._element.querySelector('.photo-post__image').addEventListener('click', () => {
+            this._openImageFullscreen();
+        });
+
+    }
 }
-
-
-
-initialCards.forEach((item) => {
-    const card = new Card ('.photo-post-template' , item);
-    const cardElement = card.generateCard();
-  
-    // Добавляем в DOM
-    document.querySelector('.photo-post__list').append(cardElement);
-  });
