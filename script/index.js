@@ -58,51 +58,61 @@ const initialCards = [{
     popup = document.querySelector('.popup'),
     popupBtnSaveEdit = document.querySelector('.popup__btn-save-edit_create'),
     formValidProf = document.querySelector('.popup__edit-form'),
-    formValidCard = document.querySelector('.popup__edit-form_add'); 
+    formValidCard = document.querySelector('.popup__edit-form_add');
 
-export { popupOpenImg, popupOpenedImg, popupOpenedImgText};
+const formValidatorProfile = new FormValidator(configValidation, formValidProf);
+formValidatorProfile.enableValidation();
+
+const formValidatorAddCard = new FormValidator(configValidation, formValidCard);
+formValidatorAddCard.enableValidation();
+
+export { popupOpenImg, popupOpenedImg, popupOpenedImgText };
 
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePressEsc);
-}
+};
 
 editButton.addEventListener('click', popup => {
     openPopup(popupProfile);
+    formValidatorProfile.resetValidation();
+    formValidatorProfile.toggleButtonState();
     nameInput.value = nameTitle.textContent;
     jobInput.value = profileText.textContent;
 });
 
-function disabledPicBtnPicAdd(disable) {
-    disable.classList.add('popup__btn-save-edit_disabled');
-    disable.setAttribute('disabled', 'disabled');
-};
-
 profileBtnPicAdd.addEventListener('click', popup => {
     openPopup(popupAdd);
-    disabledPicBtnPicAdd(popupBtnSaveEdit);
+    formValidatorAddCard.resetValidation();
+    formValidatorAddCard.toggleButtonState();
+    popupInputTextInsertLinkInput.value = "";
+    popupInputTextInsertNameInput.value = "";
 });
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', closePressEsc);
-}
+};
 
-closePopupBtn.addEventListener('click', popup => closePopup(popupProfile));
+closePopupBtn.addEventListener('click', popup => {
+    closePopup(popupProfile);
+    formValidatorProfile.resetValidation();
+
+});
 popupBtnCloseAdd.addEventListener('click', popup => closePopup(popupAdd));
 popupBtnCloseOpenImg.addEventListener('click', popup => closePopup(popupOpenImg));
 
 function handlerFormSubmit(evt) {
     evt.preventDefault();
 
-    let editName = nameInput.value;
-    let editJob = jobInput.value;
+    const editName = nameInput.value;
+    const editJob = jobInput.value;
 
     nameTitle.textContent = editName;
     profileText.textContent = editJob;
 
     closePopup(popupProfile);
-}
+};
 
 formElement.addEventListener('submit', handlerFormSubmit);
 
@@ -111,41 +121,38 @@ function closePressEsc(evt) {
         const popupOpened = document.querySelector('.popup_opened');
         closePopup(popupOpened);
     }
-}
+};
 
 popupProfile.addEventListener("click", (evt) => {
     if (evt.currentTarget === evt.target) {
         closePopup(popupProfile);
     }
-})
+});
 
 popupAdd.addEventListener("click", (evt) => {
     if (evt.currentTarget === evt.target) {
         closePopup(popupAdd);
     }
-})
-
+});
 popupOpenImg.addEventListener("click", (evt) => {
     if (evt.currentTarget === evt.target) {
         closePopup(popupOpenImg);
     }
-})
+});
 
-
-function renderCard() {
-    initialCards.forEach((item) => {
-        const card = new Card('.photo-post-template', item);
-        const cardElement = card.generateCard();
-
-        document.querySelector('.photo-post__list').append(cardElement);
-    });
+function createCard(item) {
+    const card = new Card('.photo-post-template', item);
+    const cardElement = card.generateCard();
+    return cardElement
 }
 
-function insertAddCard(newCard) {
-    const addedCard = new Card('.photo-post-template', newCard);
-    const newAddedCard = addedCard.generateCard();
+function renderCard(item) {
+    const photoPostItem = createCard(item);
+    photoPostList.prepend(photoPostItem);
+};
 
-    document.querySelector('.photo-post__list').prepend(newAddedCard);
+function insert() {
+    initialCards.forEach(renderCard);
 }
 
 function createPostItemFormSubmit(evt) {
@@ -156,20 +163,13 @@ function createPostItemFormSubmit(evt) {
         link: popupInputTextInsertLinkInput.value
     };
 
-    insertAddCard(item);
+    renderCard(item);
     closePopup(popupAdd);
 
     popupInputTextInsertLinkInput.value = "";
     popupInputTextInsertNameInput.value = "";
-}
+};
 
 popupEditFormAdd.addEventListener('submit', createPostItemFormSubmit);
 
-renderCard();
-
-
-const formValidatorProfile = new FormValidator(configValidation, formValidProf);
-formValidatorProfile.enableValidation();
-
-const formValidatorAddCard = new FormValidator(configValidation, formValidCard);
-formValidatorAddCard.enableValidation();
+insert(); 
