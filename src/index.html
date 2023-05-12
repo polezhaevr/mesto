@@ -3,20 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./pages/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Место:Россия</title>
 </head>
 
 <body class="page">
     <header class="header">
-        <img class="header__logo" src="images/header-logo.svg"
+        <img class="header__logo" src="<%=require('./styles/images/header-logo.svg')%>"
             alt="Логотип шапки сервиса по редактированию фотографий - Место">
     </header>
 
     <main class="content">
         <section class="profile">
-            <img class="profile__img-avatar" src="images/avatar-for-profile.jpg" alt="Аватарка профиля">
+            <img class="profile__img-avatar" src="<%=require('./styles/images/avatar-for-profile.jpg')%>"
+                alt="Аватарка профиля">
             <div class="profile__container-about-profile">
                 <h1 class="profile__name-title">Роман Полежаев</h1>
                 <button class="profile__btn-edit" aria-label="Изменить имя и описание профиля" type="button">
@@ -93,11 +93,6 @@
             </div>
         </li>
     </template>
-
-
-    <script type="module" src="script/index.js"></script>
-    <script type="module" src="script/FormValidator.js"></script>
-    <script type="module" src="script/Card.js"></script>
 </body>
 
 </html>
