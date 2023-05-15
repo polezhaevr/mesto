@@ -1,83 +1,63 @@
 import './index.css';
 
 
-import { Card } from '../components/Card.js'
-import { FormValidator } from '../components/FormValidator.js'
+import { Card } from '../components/Card.js';
+import { FormValidator } from '../components/FormValidator.js';
+
+import Section from '../components/Section.js';
+import {PopupWithForm} from "../components/PopupWithForm.js";
+import {PopupWithImage} from "../components/PopupWithImage.js";
+import {UserInfo} from "../components/UserInfo.js";
+import {Popup} from "../components/Popup.js";
 
 
-const initialCards = [{
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-},
-{
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-},
-{
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-},
-{
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-},
-{
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-},
-{
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-}
-],
+import {
+    initialCards, configValidation, editButton,
+    popupProfile, popupAdd, closePopupBtn, opupBtnCloseAdd, formElement, photoPostList, profileBtnPicAdd,
+    popupEditFormAdd, popupBtnCloseOpenImg, popupOpenImg, nameInput,
+    jobInput, popupInputTextInsertNameInput, popupInputTextInsertLinkInput,
+    nameTitle, profileText, popupOpenedImg, popupOpenedImgText, popup,
+    popupBtnSaveEdit, formValidProf, formValidCard
 
-    configValidation = {
-        inputSelector: '.popup__input-text',
-        submitButtonSelector: '.popup__btn-save-edit',
-        inactiveButtonClass: 'popup__btn-save-edit_disabled',
-        inputErrorClass: 'popup__input-text_type_error',
-        errorClass: 'popup__input-error_active'
-    },
-    content = document.querySelector('.content'),
-    editButton = content.querySelector('.profile__btn-edit'),
-    popupProfile = document.querySelector('.popup_profile'),
-    popupAdd = document.querySelector('.popup_add'),
-    closePopupBtn = popupProfile.querySelector('.popup__btn-close'),
-    popupBtnCloseAdd = document.querySelector('.popup__btn-close_add'),
-    formElement = popupProfile.querySelector('.popup__edit-form'),
-    photoPostList = document.querySelector('.photo-post__list'),
-    profileBtnPicAdd = document.querySelector('.profile__btn-pic-add'),
-    popupEditFormAdd = document.querySelector('.popup__edit-form_add'),
-    popupBtnCloseOpenImg = document.querySelector('.popup__btn-close_open-img'),
-    popupOpenImg = document.querySelector('.popup_open-img'),
-    nameInput = popupProfile.querySelector('.popup__input-text_insert_nameinput'),
-    jobInput = popupProfile.querySelector('.popup__input-text_insert_jobinput'),
-    popupInputTextInsertNameInput = document.querySelector('.popup__input-text_insert_textinput'),
-    popupInputTextInsertLinkInput = document.querySelector('.popup__input-text_insert_linkinput'),
-    nameTitle = document.querySelector('.profile__name-title'),
-    profileText = document.querySelector('.profile__text'),
-    popupOpenedImg = document.querySelector('.popup__opened-img'),
-    popupOpenedImgText = document.querySelector('.popup__opened-img-text'),
-    popup = document.querySelector('.popup'),
-    popupBtnSaveEdit = document.querySelector('.popup__btn-save-edit_create'),
-    formValidProf = document.querySelector('.popup__edit-form'),
-    formValidCard = document.querySelector('.popup__edit-form_add');
+} from '../utils/constants.js';
 
+
+//Экземпляр валидации формы редактирования профиля 
 const formValidatorProfile = new FormValidator(configValidation, formValidProf);
 formValidatorProfile.enableValidation();
-
+//Экземпляр валидации добавления карточки
 const formValidatorAddCard = new FormValidator(configValidation, formValidCard);
 formValidatorAddCard.enableValidation();
 
-export { popupOpenImg, popupOpenedImg, popupOpenedImgText };
 
+//Открытие формы редактирования
+editButton.addEventListener('click', function () {
+    const openPopup = new Popup(popupProfile);
+    openPopup.open();
+    openPopup.setEventListeners();
+    formValidatorProfile.resetValidation();
+    formValidatorProfile.toggleButtonState();
+});
+
+
+// Закрытие форм
+closePopupBtn.addEventListener('click' , function() {
+    const closePopup = new Popup(popupProfile);
+    closePopup.close();
+});
+
+
+
+
+
+/*
 export function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', closePressEsc);
 };
 
 editButton.addEventListener('click', popup => {
-    openPopup(popupProfile);
+    openPopup(popupProfile)
     formValidatorProfile.resetValidation();
     formValidatorProfile.toggleButtonState();
     nameInput.value = nameTitle.textContent;
@@ -142,32 +122,43 @@ popupOpenImg.addEventListener("click", (evt) => {
         closePopup(popupOpenImg);
     }
 });
+*/
 
-function createCard(item) {
-    const card = new Card('.photo-post-template', item);
-    const cardElement = card.generateCard();
-    return cardElement
-}
 
-function renderCard(item) {
-    const photoPostItem = createCard(item);
-    photoPostList.prepend(photoPostItem);
-};
+//Орисовка и даобавление карточек из массива initialCards
+const cardsList = new Section({
+    items: initialCards,
+    renderer: (item) => {
+        const card = new Card('.photo-post-template', item);
+        const cardElement = card.generateCard();
 
-function insert() {
-    initialCards.forEach(renderCard);
-}
+        cardsList.addItem(cardElement);
+    }
+}, photoPostList);
 
+cardsList.renderer();
+
+//Добавление карточки при нажатии на форму
 function createPostItemFormSubmit(evt) {
     evt.preventDefault();
 
-    const item = {
+    const item = [{
         name: popupInputTextInsertNameInput.value,
         link: popupInputTextInsertLinkInput.value
-    };
+}];
 
-    renderCard(item);
+    const addCard = new Section ({
+        items: item, 
+        renderer: (item) => {
+            const card = new Card('.photo-post-template', item);
+            const cardElement = card.generateCard();
+    
+            cardsList.addItem(cardElement);
+        }
+    }, photoPostList);
     closePopup(popupAdd);
+
+    addCard.renderer();
 
     popupInputTextInsertLinkInput.value = "";
     popupInputTextInsertNameInput.value = "";
@@ -175,4 +166,11 @@ function createPostItemFormSubmit(evt) {
 
 popupEditFormAdd.addEventListener('submit', createPostItemFormSubmit);
 
-insert(); 
+
+
+
+
+
+
+
+
