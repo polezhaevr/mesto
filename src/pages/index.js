@@ -17,9 +17,6 @@ import {
 import {
     UserInfo
 } from "../components/UserInfo.js";
-import {
-    Popup
-} from "../components/Popup.js";
 
 import {
     initialCards,
@@ -40,11 +37,11 @@ import {
 //Экземпляр валидации формы редактирования профиля 
 const formValidatorProfile = new FormValidator(configValidation, formValidProf);
 formValidatorProfile.enableValidation();
-//Экземпляр валидации добавления карточки
+//Экземпляр валидации формы добавления карточки
 const formValidatorAddCard = new FormValidator(configValidation, formValidCard);
 formValidatorAddCard.enableValidation();
 
-//Созданеи экземпляра данных польщователя
+//Экземпляр данных пользователя
 const newUser = new UserInfo({
     profileName: '.profile__name-title',
     profileDescription: '.profile__text'
@@ -60,7 +57,7 @@ const popupEditProfile = new PopupWithForm(popupProfile, {
 
 popupEditProfile.setEventListeners();
 
-//Зполенения инпутов формы редактирования
+//Заполнение инпутов формы редактирования
 function editProfile() {
     const userData = newUser.getUserInfo();
     nameInput.value = userData.userName;
@@ -80,7 +77,7 @@ editButton.addEventListener('click', function () {
 const openPopupFullScreenImage = new PopupWithImage(popupOpen);
 openPopupFullScreenImage.setEventListeners();
 
-//Орисовка и даобавление карточек из массива initialCards 
+//Отрисовка и даобавление карточек из массива initialCards 
 const cardsList = new Section({
     items: initialCards,
     renderer: (items) => {
