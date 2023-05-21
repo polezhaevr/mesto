@@ -1,5 +1,7 @@
 export class Card {
-    constructor(templateSelector, data , handleCardClick) {
+    constructor(templateSelector, data, {
+        handleCardClick
+    }) {
         this._templateSelector = templateSelector;
         this._name = data.name;
         this._link = data.link;
@@ -20,7 +22,6 @@ export class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
-
 
         this._element.querySelector('.photo-post__image').src = this._link;
         this._element.querySelector('.photo-post__image').alt = 'Фотография ' + this._name;

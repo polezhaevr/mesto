@@ -13,7 +13,6 @@ export class FormValidator {
             evt.preventDefault();
 
         });
-
         this._setEventListeners();
     };
 
@@ -77,4 +76,3 @@ export class FormValidator {
         }
     };
 };
-
