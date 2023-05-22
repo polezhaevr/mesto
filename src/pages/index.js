@@ -58,12 +58,14 @@ const popupEditProfile = new PopupWithForm(popupProfile, {
 popupEditProfile.setEventListeners();
 
 //Заполнение инпутов формы редактирования
+
 function editProfile() {
     const userData = newUser.getUserInfo();
     nameInput.value = userData.userName;
     jobInput.value = userData.userInfo;
 
 }
+
 
 //Открытие формы редактирования
 editButton.addEventListener('click', function () {

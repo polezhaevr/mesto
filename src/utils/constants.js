@@ -33,7 +33,7 @@ export const configValidation = {
 };
 
 export const editButton = document.querySelector('.profile__btn-edit');
-export const popupProfile = document.querySelector('.popup_profile');
+export const popupProfile = '.popup_profile';
 
 /* Через document.querySelector отказывается работать вебпак выдает ошибку:
 https://disk.yandex.ru/i/wmWbd1fj9Y5y6g   
@@ -45,5 +45,5 @@ export const nameInput = document.querySelector('.popup__input-text_insert_namei
 export const jobInput = document.querySelector('.popup__input-text_insert_jobinput');
 export const formValidProf = document.querySelector('.popup__edit-form');
 export const formValidCard = document.querySelector('.popup__edit-form_add');
-export const popupOpen = document.querySelector('.popup_open-img');
-export const popupOpenFormAddCard = document.querySelector('.popup_add');
+export const popupOpen = '.popup_open-img';
+export const popupOpenFormAddCard = '.popup_add';
