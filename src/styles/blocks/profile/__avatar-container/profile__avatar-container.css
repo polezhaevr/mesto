@@ -25,13 +25,13 @@
     background-color: #2a2c2f;
     opacity: .3;
     z-index: -1;
-    pointer-events: none
+    pointer-events: none;
 }
 
 .profile__avatar-container:hover:before {
     z-index: 0;
     opacity: .8;
-    transition: opacity .3s ease
+    transition: opacity .3s ease;
 }
 
 @media screen and (max-width: 768px) {
