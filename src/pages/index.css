@@ -14,6 +14,7 @@
 @import url(../styles/blocks/profile/__container-about-profile/profile__container-about-profile.css);
 @import url(../styles/blocks/profile/__name-title/profile__name-title.css);
 @import url(../styles/blocks/profile/__text/profile__text.css);
+@import url(../styles/blocks/profile/__avatar-container/profile__avatar-container.css);
 
 /*photo-post*/
 @import url(../styles/blocks/photo-post/photo-post.css);
@@ -25,6 +26,8 @@
 @import url(../styles/blocks/photo-post/__btn-like/photo-post__btn-like.css);
 @import url(../styles/blocks/photo-post/__btn-trash/photo-post__btn-trash.css);
 @import url(../styles/blocks/photo-post/__btn-like/_focus/photo-post__btn-like_focus.css);
+@import url(../styles/blocks/photo-post/__container-count/photo-post__container-count.css);
+@import url(../styles/blocks/photo-post/__count-likes/photo-post__count-likes.css);
 
 /*footer*/
 @import url(../styles/blocks/footer/__copyright/footer__copyright.css);

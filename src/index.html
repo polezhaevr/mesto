@@ -15,8 +15,10 @@
 
     <main class="content">
         <section class="profile">
-            <img class="profile__img-avatar" src="<%=require('./styles/images/avatar-for-profile.jpg')%>"
-                alt="Аватарка профиля">
+            <div class="profile__avatar-container">
+                <img class="profile__img-avatar" src="<%=require('./styles/images/avatar-for-profile.jpg')%>"
+                    alt="Аватарка профиля" >
+            </div>
             <div class="profile__container-about-profile">
                 <h1 class="profile__name-title">Роман Полежаев</h1>
                 <button class="profile__btn-edit" aria-label="Изменить имя и описание профиля" type="button">
@@ -51,7 +53,8 @@
                     class="popup__input-text popup__input-text_insert_jobinput" type="text" value="Иногда турист"
                     placeholder="Описание" required>
                 <span class="text-input-error popup__input-error">Вы пропустили это поле.</span>
-                <button name="inputsaveedit" type="submit" class="popup__btn-save-edit popup__btn-save-edit_disabled"
+                <button name="inputsaveedit" type="submit"
+                    class="popup__btn-save-edit popup__btn-save-edit_disabled popup__btn-progress-status"
                     disabled>Сохранить</button>
             </form>
         </div>
@@ -70,7 +73,21 @@
                     placeholder="Ссылка на картинку" name='link' required>
                 <span class="url-input-error popup__input-error">Введите адрес сайта.</span>
                 <button name="inputsaveedit" type="submit"
-                    class="popup__btn-save-edit popup__btn-save-edit_create popup__btn-save-edit_disabled">Создать</button>
+                    class="popup__btn-save-edit popup__btn-save-edit_create popup__btn-save-edit_disabled  popup__btn-progress-status">Создать</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup_update-avatar">
+        <div class="popup__container">
+            <button class="popup__btn-close  popup__btn-close_add" type="button"></button>
+            <h2 class="popup__edit-title">Обновить аватар</h2>
+            <form name="popupadd" class="popup__edit-form popup__edit-avatar" novalidate>
+                <input id="avatar-link" class="popup__input-text popup__input-text_insert_linkinput" type="url"
+                    placeholder="Ссылка на картинку" name="avatar" required>
+                <span class="avatar-link-error popup__input-error">Введите адрес картинки.</span>
+                <button name="inputsaveedit" type="submit"
+                    class="popup__btn-save-edit popup__btn-save-edit_create popup__btn-save-edit_disabled popup__btn-progress-status">Cохранить</button>
             </form>
         </div>
     </div>
@@ -83,13 +100,26 @@
         </div>
     </div>
 
+    <div class="popup popup_delete">
+        <div class="popup__container">
+            <button class="popup__btn-close  popup__btn-close_add" type="button"></button>
+            <h2 class="popup__edit-title">Вы уверены?</h2>
+            <form name="popupadd" class="popup__edit-form popup__edit-form_delete">
+                <button name="inputdelete" type="submit" class="popup__btn-save-edit">Да</button>
+            </form>
+        </div>
+    </div>
+
     <template class="photo-post-template">
         <li class="photo-post__item">
             <button class="photo-post__btn-trash" type="button"></button>
             <img class="photo-post__image" alt="">
             <div class="photo-post__text-container">
                 <h2 class="photo-post__text"></h2>
-                <button class="photo-post__btn-like" type="button"></button>
+                <div class="photo-post__container-count">
+                    <button class="photo-post__btn-like" type="button"></button>
+                    <p class="photo-post__count-likes">0</p>
+                </div>
             </div>
         </li>
     </template>
