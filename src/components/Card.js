@@ -53,8 +53,10 @@ export class Card {
     }
 
     _hideDeleteButton() {
-        if (this._userIdOwner !== this._userId) {
+        if (this._userId !== this._userIdOwner) {
             this._btnTrash.remove();
+        }else {
+            this._element.prepend(this._btnTrash);
         }
     }
 

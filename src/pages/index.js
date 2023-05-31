@@ -61,11 +61,13 @@ let userId;
 Promise.all([api.getUserInfo(), api.getInitialCards()])
     .then(([userData, data]) => {
         userId = userData._id;
-            
+
         newUser.setUserInfo(userData);
         newUser.setUserAvatar(userData);
-       
-        cardsList.allRenderer(data , userId);        
+
+        cardsList.allRenderer(data, userId);
+
+        console.log(data)
     })
     .catch((err) => {
         console.log(err);
@@ -74,8 +76,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
 //Отрисовка и даобавление карточек из api
 const cardsList = new Section({
     items: [],
-    renderer: (items , user) => {
-        const card = newCard(items , user);
+    renderer: (items, user) => {
+        const card = newCard(items, user);
         cardsList.addItem(card);
     }
 }, photoPostList);
@@ -173,7 +175,7 @@ const popupOpenDeleteCard = new PopupWithDelete(popupDelete, {
 popupOpenDeleteCard.setEventListeners();
 
 //Экземпляр новой карточки
-const newCard = (data , user) => {
+const newCard = (data, user) => {
     const card = new Card('.photo-post-template', {
         data: data,
         userId: user,
@@ -219,9 +221,10 @@ const newCard = (data , user) => {
         }
 
     });
-
+    
     return card.generateCard();
 };
+
 
 //Создание экземпляра формы добавления карточки
 const addNewCard = new PopupWithForm(popupOpenFormAddCard, {
@@ -229,7 +232,7 @@ const addNewCard = new PopupWithForm(popupOpenFormAddCard, {
         addNewCard.saveStatus(true);
         api.addCard(data)
             .then((data) => {
-                const card = newCard(data);
+                const card = newCard(data , userId);
                 cardsList.addItem(card);
                 addNewCard.close();
             })
@@ -250,4 +253,3 @@ profileBtnPicAdd.addEventListener('click', function () {
     formValidatorProfile.resetValidation();
     formValidatorProfile.toggleButtonState();
 });
-
